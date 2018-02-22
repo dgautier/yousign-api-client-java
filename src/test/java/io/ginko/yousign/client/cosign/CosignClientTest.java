@@ -26,9 +26,10 @@ public class CosignClientTest {
     @WebServiceRef
     private CosignWS cosignWS;
 
+
     @Test
     public void cosign(){
-cosignWS.initCosign()
+        throw new IllegalArgumentException("Not implemented");
     }
 
 }
