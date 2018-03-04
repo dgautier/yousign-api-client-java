@@ -1,5 +1,15 @@
 # Client Java de l'API WS Yousign (v1.2.6)
 
+[![Build Status][Travis badge]][Travis build] [![Coverage Status][Coveralls badge]][Coveralls build] [![Maven Central][Maven Central badge]][Maven Central build]
+
+[Travis badge]: https://travis-ci.org/dgautier/yousign-api-client-java.svg
+[Travis build]: https://travis-ci.org/dgautier/yousign-api-client-java
+[Coveralls badge]: https://coveralls.io/repos/dgautier/yousign-api-client-java/badge.svg
+[Coveralls build]: https://coveralls.io/github/dgautier/yousign-api-client-java
+[Maven Central badge]: http://img.shields.io/maven-central/v/io.ginko/yousign-api-client-java.svg
+[Maven Central build]: http://repo1.maven.org/maven2/io/ginko/yousign-api-client-java/1.0.0-SNAPSHOT/
+
+
 ## Description
 
 Ce client permet d'utiliser l'[API Soap de Yousign](http://developer.yousign.fr) via le langage Java.
