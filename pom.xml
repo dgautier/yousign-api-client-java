@@ -1,50 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.ginko</groupId>
     <artifactId>yousign-api-client</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <name>Yousign CDI Web Service client</name>
+    <inceptionYear>2018</inceptionYear>
+    <description>Java Web Service Client for Yousign</description>
+    <url>https://github.com/dgautier/yousign-api-client-java</url>
+
+    <developers>
+        <developer>
+            <name>David Gautier</name>
+            <email>david.gautier@ginko.io</email>
+            <timezone>Europe/Paris</timezone>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/dgautier/yousign-api-client-java/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:dgautier/yousign-api-client-java.git</connection>
+        <developerConnection>scm:git:git@github.com:dgautier/yousign-api-client-java.git</developerConnection>
+        <url>scm:git:git@github.com:dgautier/yousign-api-client-java.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <javaee.version>7.0</javaee.version>
+        <cxf.version>3.2.2</cxf.version>
+        <weld3.version>3.0.3.Final</weld3.version>
     </properties>
-    
+
 
     <profiles>
         <profile>
-            <id>wildfly-embedded</id>
+            <id>weld-embedded</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <dependencies>
                 <dependency>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                    <version>4.12</version>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-weld-embedded</artifactId>
+                    <version>2.0.0.Final</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.weld.module</groupId>
+                    <artifactId>weld-web</artifactId>
+                    <version>${weld3.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.jboss.arquillian.junit</groupId>
-                    <artifactId>arquillian-junit-container</artifactId>
-                    <version>1.3.0.Final</version>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                    <version>${cxf.version}</version>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.wildfly.arquillian</groupId>
-                    <artifactId>wildfly-arquillian-container-embedded</artifactId>
-                    <version>2.1.0.Final</version>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-rt-transports-http</artifactId>
+                    <version>${cxf.version}</version>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <version>2.3.0</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-impl</artifactId>
+                    <version>2.3.0</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-core</artifactId>
+                    <version>2.3.0</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
-            <build>
-
-            </build>
         </profile>
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -52,16 +118,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>2.0</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.byteslounge</groupId>
-            <artifactId>cdi-properties</artifactId>
-            <version>1.1.1</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
@@ -79,7 +139,7 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.7.Final</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -90,9 +150,27 @@
 
         <!-- Test dependencies -->
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.9.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <version>1.4.0.Final</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -111,10 +189,16 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <vmArgs>
+                        <vmArg>-Djavax.xml.accessExternalDTD=all</vmArg>
+                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                    </vmArgs>
                     <!-- Package name -->
                     <packageName>io.ginko.yousign.client.cosign</packageName>
                     <wsdlUrls>
                         <wsdlUrl>https://apidemo.yousign.fr:8181/CosignWS/CosignWS?wsdl</wsdlUrl>
+                        <wsdlUrl>https://apidemo.yousign.fr:8181/AuthenticationWS/AuthenticationWS?wsdl</wsdlUrl>
+                        <wsdlUrl>https://apidemo.yousign.fr:8181/ArchiveWS/ArchiveWS?wsdl</wsdlUrl>
                     </wsdlUrls>
                 </configuration>
             </plugin>
