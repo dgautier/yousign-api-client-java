@@ -1,0 +1,23 @@
+sudo: false
+
+language: java
+
+cache:
+  directories:
+  - $HOME/.m2
+
+branches:
+  only:
+    - master
+
+install:
+  - mvn -B clean install -Dmaven.test.skip.exec
+
+jdk:
+  - openjdk8
+  - oraclejdk8
+
+notifications:
+  email:
+    recipients:
+      - david.gautier@ginko.io
