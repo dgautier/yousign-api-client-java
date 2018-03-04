@@ -1,4 +1,4 @@
-# Client Java de l'API SOAP Yousign (v1.2.6)
+# Client Java de l'API WS Yousign (v1.2.6)
 
 ## Description
 
@@ -10,7 +10,7 @@ JDK 8
 
 ## Installation
 
-Ajoutez dans votre fichier pom.xml :
+Ajoutez dans votre pom.xml :
 
 ```xml
     <dependency>
@@ -23,22 +23,13 @@ Ajoutez dans votre fichier pom.xml :
 
 ## Configuration
 
-Renommez le fichier `ysApiParameters.ini.dist` en `ysApiParameters.ini` présent dans le répertoire `YousignAPI` 
-et placez le dans le répertoire souhaité.
+Créer le fichier application.properties et placez le dans le classpath
 
 Modifiez ensuite la configuration avec les paramètres ci-dessous:
-
- - `login` : Votre identifiant Yousign (adresse email)
- - `password` : Votre mot de passe
- - `api_key` : Votre clé d'API
-
-## Exemples
-
-Des exemples d'utilisation du client peuvent être trouvés au sein du répertoire `~/YousignAPI/examples`.
-Lancez le fichier `connection.php` pour vérifier que vous pouvez correctement accéder à l'API Yousign.
-Si tel est le cas, lancez le script `cosignature_init.php` pour créer une cosignature avec deux utilisateurs et deux fichiers.
-Vous pouvez ensuite lancer les scripts suivants:
-
- - `cosignature_list.php` : Pour lister les cosignatures créées
- - `cosignature_details.php` : Pour afficher les détails de la dernière cosignature créée
- - `cosignature_downloadFile.php` : Pour télécharger les fichiers de la dernière cosignature créée
+ - `yousign.userName` : Votre identifiant Yousign (adresse email)
+ - `yousign.password` : Votre mot de passe Yousign
+ - `yousign.apiKey` : Votre clé d'api
+ - `yousign.ws.authentication.url` : L'url du service d'authentification
+ - `yousign.ws.cosign.url` : L'url du service de cosignature
+ 
+ 
