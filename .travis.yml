@@ -11,7 +11,7 @@ branches:
     - master
 
 install:
-  - mvn -B clean install -Dmaven.test.skip.exec
+  - mvn -B clean install -Dmaven.test.skip.exec --settings .travis.settings.xml
 
 jdk:
   - openjdk8
