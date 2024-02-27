@@ -9,6 +9,10 @@
 [Maven Central badge]: http://img.shields.io/maven-central/v/io.ginko/yousign-api-client-java.svg
 [Maven Central build]: http://repo1.maven.org/maven2/io/ginko/yousign-api-client-java/1.0.0-SNAPSHOT/
 
+# TODO 
+
+- Update with latest api version :
+https://developers.yousign.com/openapi
 
 ## Description
 
